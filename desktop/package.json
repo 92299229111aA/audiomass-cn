@@ -1,0 +1,25 @@
+{
+  "name": "audiomass-desktop",
+  "productName": "AudioMass",
+  "version": "1.0.0",
+  "description": "AudioMass 音频编辑器 —— 免费开源的网页音频与波形编辑工具桌面版",
+  "main": "main.js",
+  "author": {
+    "name": "AudioMass Desktop"
+  },
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "electron .",
+    "serve": "node tools/serve-only.js",
+    "icon": "electron tools/make-icon.js",
+    "prepack:all": "npm run icon",
+    "dist": "npm run icon && electron-builder --win --publish never",
+    "dist:nsis": "npm run icon && electron-builder --win nsis --publish never",
+    "dist:portable": "npm run icon && electron-builder --win portable --publish never"
+  },
+  "devDependencies": {
+    "electron": "^44.5.1",
+    "electron-builder": "^26.15.3"
+  }
+}

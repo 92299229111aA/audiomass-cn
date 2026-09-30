@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>关于 AudioMass</title>
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; img-src data:;">
+<style>
+  :root { color-scheme: light; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: #fefefe;
+    color: #21201c;
+    font-family: -apple-system, "Segoe UI", "Microsoft YaHei", "PingFang SC", Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    line-height: 1.75;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 44px 28px 64px; }
+  h1 { font-size: 26px; font-weight: 500; margin: 0 0 6px; letter-spacing: .2px; }
+  .sub { color: #6b6a65; font-size: 13px; margin: 0 0 34px; }
+  h2 { font-size: 15px; font-weight: 500; margin: 32px 0 10px; color: #4a4945; }
+  p { margin: 0 0 14px; }
+  ul { margin: 0 0 14px; padding-left: 20px; }
+  li { margin-bottom: 5px; }
+  .card {
+    border: 1px solid rgba(0,0,0,.12);
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin: 0 0 22px;
+    background: #faf9f7;
+  }
+  .row { display: flex; gap: 12px; font-size: 14px; padding: 4px 0; }
+  .row .k { color: #6b6a65; min-width: 92px; }
+  code {
+    font-family: ui-monospace, "Cascadia Mono", Consolas, monospace;
+    font-size: 13px;
+    background: rgba(0,0,0,.055);
+    padding: 1px 5px;
+    border-radius: 4px;
+  }
+  a { color: #185fa5; }
+  .note { color: #6b6a65; font-size: 13px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>AudioMass 音频编辑器</h1>
+  <p class="sub">免费开源的音频与波形编辑工具 · 桌面版</p>
+
+  <div class="card">
+    <div class="row"><span class="k">应用版本</span><span id="app-version">—</span></div>
+    <div class="row"><span class="k">运行环境</span><span id="app-runtime">—</span></div>
+    <div class="row"><span class="k">技术栈</span><span>Web Audio API · WebAssembly · Canvas</span></div>
+    <div class="row"><span class="k">授权协议</span><span>MIT</span></div>
+  </div>
+
+  <h2>关于本应用</h2>
+  <p>
+    AudioMass 是一款完全在你的设备上运行的音频编辑器。所有音频处理都在本地完成，
+    <strong>不会上传任何文件</strong>，断网也能正常使用。
+  </p>
+
+  <h2>主要功能</h2>
+  <ul>
+    <li>导入 MP3 / WAV / FLAC / OGG 等常见格式，波形可视化编辑</li>
+    <li>淡入淡出、剪切、裁剪、复制、音量调整</li>
+    <li>多轨模式：叠加音轨、拖动片段、交叉淡化、录制、混缩导出</li>
+    <li>参数均衡器（EQ）、压缩、降噪、变速变调、BPM 检测</li>
+    <li>麦克风录音，支持从系统音频设备采集</li>
+    <li>导出 MP3 / WAV / FLAC，可编辑 ID3 标签</li>
+    <li>工程本地保存与恢复</li>
+  </ul>
+
+  <h2>快捷键</h2>
+  <p>大多数编辑快捷键使用 <strong>Shift + 按键</strong> 组合：</p>
+  <ul>
+    <li><code>Shift + Z</code> 撤销</li>
+    <li><code>Shift + C</code> 复制选区</li>
+    <li><code>Shift + X</code> 剪切选区</li>
+    <li><code>空格</code> 播放 / 暂停</li>
+  </ul>
+
+  <h2>录音权限</h2>
+  <p class="note">
+    若麦克风录音不可用，请检查 Windows「设置 → 隐私和安全性 → 麦克风」中
+    是否已允许桌面应用访问麦克风。
+  </p>
+
+  <h2>开源致谢</h2>
+  <p class="note">
+    本项目基于 <a href="https://github.com/pkalogiros/audiomass">pkalogiros/audiomass</a> 开源项目，
+    遵循 MIT 协议。内置第三方组件包括 WaveSurfer.js、lame.js（LAME MP3 编码器）、
+    libflac（FLAC 编解码）、lz4-block-codec 与 RNNoise 降噪模型，各自的授权条款详见项目
+    根目录的 <code>THIRD_PARTY_NOTICES.md</code>。
+  </p>
+</div>
+
+<script>
+  (function () {
+    var versions = document.getElementById('app-runtime');
+    var verEl = document.getElementById('app-version');
+    try {
+      var ua = navigator.userAgent;
+      var m = /Chrome\/([\d.]+)/.exec(ua);
+      if (versions) versions.textContent = 'Chromium ' + (m ? m[1] : '未知') + ' · ' + navigator.platform;
+    } catch (e) {}
+    if (verEl) verEl.textContent = '1.0.0';
+  })();
+</script>
+</body>
+</html>

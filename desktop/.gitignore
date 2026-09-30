@@ -1,0 +1,15 @@
+node_modules/
+dist/
+build/icon.ico
+build/icon.png
+*.log
+npm-debug.log*
+
+# 证书绝不入库
+certs/
+*.pfx
+*.p12
+*.pem
+*.key
+.env
+.env.*

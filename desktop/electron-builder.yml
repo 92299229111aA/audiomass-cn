@@ -1,0 +1,116 @@
+appId: co.audiomass.desktop
+productName: AudioMass
+copyright: Copyright © 2026 AudioMass
+
+directories:
+  output: dist
+  buildResources: build
+
+# 直接复用 npm 已下载好的 Electron 发行目录，省去每次构建的解压过程。
+# 注意：这里必须是「已解压」的目录（不能含 electron-v*.zip），
+# electron-builder 会走拷贝分支而非解压分支。
+electronDist: node_modules/electron/dist
+
+# 打进 app.asar 的内容：只有主进程与预加载脚本，前端资源走 extraResources
+files:
+  - main.js
+  - preload.js
+  - lib/**/*
+  - assets/**/*
+  - package.json
+
+# 前端静态资源会被原样输出到 resources/web，由主进程的本地服务器托管
+extraResources:
+  - from: ../src
+    to: web
+    filter:
+      - "**/*"
+      - "!.git/**"
+      - "!**/*.md"
+      - "!**/.DS_Store"
+      # —— 以下为演示 / 宣传资源，按需裁剪 ——
+      - "!about/**"
+      - "!about.html"
+      - "!mp3/**"
+      - "!**/*.mp3"
+      - "!**/*.appcache"
+      - "!sw.js"
+      - "!index-cache.html"
+      - "!index-final.html"
+      # 若要恢复「加载示例文件 / 多轨示例 / 原版关于页」，删除上面 6 行即可
+      # （约增加 13 MB：示例音频 8.1 MB + 宣传素材 5.4 MB）
+  - from: ../LICENSE
+    to: legal/LICENSE.txt
+  - from: ../THIRD_PARTY_NOTICES.md
+    to: legal/THIRD_PARTY_NOTICES.md
+
+win:
+  icon: build/icon.ico
+  executableName: AudioMass
+  requestedExecutionLevel: asInvoker
+  # 只保留中英两套 Chromium 语言包，可省约 4 MB
+  electronLanguages:
+    - zh-CN
+    - en-US
+  target:
+    - target: nsis
+      arch:
+        - x64
+    - target: portable
+      arch:
+        - x64
+  # 代码签名：证书通过环境变量提供，不写进仓库
+  #   CSC_LINK=file:///D:/certs/audiomass.pfx
+  #   CSC_KEY_PASSWORD=********
+  # 未提供证书时自动跳过签名（构建仍可成功，但会有 SmartScreen 警告）
+  signtoolOptions:
+    signingHashAlgorithms:
+      - sha256
+    rfc3161TimeStampServer: http://timestamp.digicert.com
+
+nsis:
+  oneClick: false
+  perMachine: false
+  selectPerMachineByDefault: false
+  allowElevation: true
+  allowToChangeInstallationDirectory: true
+  createDesktopShortcut: true
+  createStartMenuShortcut: true
+  shortcutName: AudioMass 音频编辑器
+  uninstallDisplayName: AudioMass 音频编辑器
+  deleteAppDataOnUninstall: false
+  runAfterFinish: true
+  installerLanguages:
+    - zh_CN
+    - en_US
+  displayLanguageSelector: false
+  installerIcon: build/icon.ico
+  uninstallerIcon: build/icon.ico
+  installerHeaderIcon: build/icon.ico
+  artifactName: AudioMass-Setup-${version}.${ext}
+
+portable:
+  unpackDirName: AudioMass-${version}
+  requestExecutionLevel: user
+  artifactName: AudioMass-Portable-${version}.${ext}
+
+fileAssociations:
+  - ext:
+      - mp3
+      - wav
+      - flac
+      - ogg
+      - oga
+      - m4a
+      - aac
+      - webm
+    name: AudioMass.AudioFile
+    description: AudioMass 音频文件
+    icon: build/icon.ico
+    role: Editor
+  - ext:
+      - amss
+    name: AudioMass.Project
+    description: AudioMass 工程文件
+    icon: build/icon.ico
+    role: Editor

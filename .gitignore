@@ -3,3 +3,31 @@
 *.aif
 *.aiff
 *.br
+
+# ---------- 桌面打包工程（desktop/）----------
+# 依赖
+desktop/node_modules/
+
+# 构建产物与安装包（体积很大，不入库）
+desktop/dist/
+desktop/release/
+desktop/release[0-9]*/
+desktop/out/
+desktop/build/icon.ico
+desktop/build/icon.png
+desktop/*.log
+
+# 证书绝不入库
+desktop/certs/
+*.pfx
+*.p12
+*.pem
+*.key
+desktop/.env
+desktop/.env.*
+
+# 临时调试目录
+desktop/_*/
+
+# ---------- 工具本地状态 ----------
+.workbuddy/
