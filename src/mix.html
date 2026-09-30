@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
-	<title>AudioMass - Multitrack Mixer</title>
+	<title>AudioMass - 多轨混音器</title>
 	<meta charset="utf-8" />
 	<style>
 	html,body{height:100%}
@@ -46,8 +46,8 @@
 	</style>
 </head>
 <body>
-	<div id="m"><div class="empty">MULTITRACK MIXER</div></div>
-	<a id="d" onclick="dock()">DOCK</a>
+	<div id="m"><div class="empty">多轨混音器</div></div>
+	<a id="d" onclick="dock()">停靠</a>
 	<a id="e" onclick="remove()">X</a>
 	<a id="f" onmousedown="return drag(event)"></a>
 
@@ -62,7 +62,7 @@
 
 		if (iframe) {
 			d.body.className = 'b';
-			d.getElementById ('d').textContent = 'UNDOCK';
+			d.getElementById ('d').textContent = '取消停靠';
 		}
 
 		function host () {
@@ -266,5 +266,6 @@
 		};
 		w.requestAnimationFrame ( loop );
 	</script>
+	<script src="i18n.js"></script>
 </body>
 </html>

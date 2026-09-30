@@ -237,7 +237,7 @@
 		function makeTrack ( name ) {
 			return {
 				id: 'mt' + (track_uid++),
-				name: name || ('Channel ' + track_uid),
+				name: name || ('声道 ' + track_uid),
 				mute: false,
 				solo: false,
 				vol: 1,
@@ -696,7 +696,7 @@
 		function addTrack ( index ) {
 			var prev = cloneState ();
 			var tr = makeTrack ();
-			tr.name = 'Channel ' + (tracks.length + 1);
+			tr.name = '声道 ' + (tracks.length + 1);
 			if (index === undefined) tracks.push ( tr );
 			else tracks.splice ( Math.max (0, Math.min (index, tracks.length)), 0, tr );
 			selected_track = tr.id;
@@ -5533,8 +5533,8 @@
 			editing_clip = null;
 		});
 
-		tracks.push ( makeTrack ('Channel 1') );
-		tracks.push ( makeTrack ('Channel 2') );
+		tracks.push ( makeTrack ('声道 1') );
+		tracks.push ( makeTrack ('声道 2') );
 		selected_track = tracks[0].id;
 		build ();
 	}

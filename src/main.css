@@ -57,7 +57,7 @@
 	--inset-hi:inset 0 1px 0 rgba(255,255,255,.04);
 
 	/* Typography (system only) */
-	--ff:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+	--ff:system-ui,-apple-system,"Segoe UI","Microsoft YaHei","PingFang SC","Noto Sans CJK SC",Roboto,"Helvetica Neue",Arial,sans-serif;
 	--ff-mono:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
 }
 
@@ -614,7 +614,7 @@ a{
 	font-size:7px;line-height:7px;
 }
 .pk_mt_pan:before{content:"L/R";color:var(--ac-2)}
-.pk_mt_vol:before{content:"VOL";color:#b9c6ff}
+.pk_mt_vol:before{content:"音量";color:#b9c6ff}
 .pk_mt_knob:after{
 	content:attr(data-val);
 	position:absolute;left:-9px;top:25px;width:42px;
@@ -912,7 +912,7 @@ a{
 
 /* ---------- Icon glyphs (icomoon-driven) ---------- */
 .icon-silence:before{content:"S";height:1px;display:inline-block;font-family:var(--ff)}
-.icon-clearsel:before{content:"clear selection"}
+.icon-clearsel:before{content:"清除选区"}
 .icon-files-empty:before{content:"\e925"}
 .icon-file-text2:before{content:"\e926"}
 .icon-play3:before{content:"\ea1c"}
@@ -1491,7 +1491,7 @@ body.pk_stndln{padding-bottom:600px;overflow:hidden}
 	.pk_sellist .pk_title{display:none}
 	.pk_tb .pk_selection .pk_btn{width:34px}
 	.pk_selection .pk_sellist{width:212px}
-	.icon-clearsel:before{content:"clear"}
+	.icon-clearsel:before{content:"清除"}
 	.pk_mark1{font-size:9px;letter-spacing:0}
 }
 

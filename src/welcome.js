@@ -27,19 +27,19 @@ setTimeout(function () {
 			var mobile_note = '';
 
 			if (PKAE.isMobile) {
-				mobile_note = '(Optimized for desktop - sorry)<br/><br/>';
-				body_str = 'Tips:<br/>Please make sure your device is not in silent mode. You might need to physically flip the silent switch. '+
+				mobile_note = '（桌面端体验更佳，敬请谅解）<br/><br/>';
+				body_str = '提示：<br/>请确认设备未处于静音模式。你可能需要拨动实体静音开关。'+
 				'<img src="phone-switch.jpg" style="max-width:224px;max-height:126px;width:40%;margin: 10px auto; display: block;"/>'+
 				'<br/><br/>';
 			}
 			else {
-				body_str = 'Tips:<br/>Please keep in mind that most key shortcuts rely on the <strong>Shift + <u>key</u></strong> combo. (eg Shift+Z for undo, Shift+C copy, Shift+X cut... etc )<br/><br/>';
-				body_str2 = 'Check out the codebase on <a href="https://github.com/pkalogiros/audiomass" target="_blank">Github</a><br/><br/>'; // checkout the code on github
+				body_str = '提示：<br/>大多数快捷键使用 <strong>Shift + <u>按键</u></strong> 组合，例如 Shift+Z 撤销、Shift+C 复制、Shift+X 剪切。<br/><br/>';
+				body_str2 = '在 <a href="https://github.com/pkalogiros/audiomass" target="_blank">GitHub</a> 查看源代码。<br/><br/>'; // checkout the code on github
 			}
 
 			// Welcome to AudioMass,
 			var md = new PKSimpleModal({
-				title: '<font style="font-size:15px">Welcome to AudioMass</font>',
+				title: '<font style="font-size:15px">欢迎使用 AudioMass</font>',
 				ondestroy: function( q ) {
 					PKAE.ui.InteractionHandler.on = false;
 					PKAE.ui.KeyHandler.removeCallback ('modalTemp');
@@ -47,13 +47,13 @@ setTimeout(function () {
 			},
 			body:'<div style="overflow:auto;-webkit-overflow-scrolling:touch;max-width:580px;width:calc(100vw - 40px);max-height:calc(100vh - 340px);min-height:110px;font-size:13px; color:#95c6c6;padding-top:7px;">'+
 				mobile_note+
-				'AudioMass is a free, open source, web-based Audio and Waveform Editor.<br />It runs entirely in the browser with no backend and no plugins required!'+
+				'AudioMass 是一款免费开源的网页音频与波形编辑器。<br />它完全在浏览器中运行，无需后端或插件！'+
 				'<br/><br/>'+
 				body_str+
-				'You can load any type of audio your browser supports and perform operations such as fade in, cut, trim, change the volume, '+
-				'and apply a plethora of audio effects.<br/><br/>'+
+				'可以加载浏览器支持的音频，并进行淡入、剪切、裁剪、调整音量，'+
+				'以及应用各种音频效果。<br/><br/>'+
 				body_str2+
-				'I hope you enjoy the little music pieces. I wrote them a long time ago :)'+
+				'希望你喜欢这些音乐片段，它们是我很久以前创作的。:)'+
 				'</div>',
 			setup:function( q ) {
 					PKAE.ui.InteractionHandler.checkAndSet ('modal');
@@ -74,7 +74,7 @@ setTimeout(function () {
 				}
 			});
 			md.Show ();
-			document.getElementsByClassName('pk_modal_cancel')[0].innerHTML = '&nbsp; &nbsp; &nbsp; OK &nbsp; &nbsp; &nbsp;';
+			document.getElementsByClassName('pk_modal_cancel')[0].innerHTML = '&nbsp; &nbsp; &nbsp; 确定 &nbsp; &nbsp; &nbsp;';
 	};
 
 	var change = 99;

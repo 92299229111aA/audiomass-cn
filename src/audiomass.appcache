@@ -2,13 +2,39 @@ CACHE MANIFEST
 # v1 - July 26, 2018
 # v2 - May 25, 2020
 # v6 - multitrack sample cancel refresh
+# v7 - zh-CN source scripts and styles
+# v8 - zh-CN text updates
 
 /index-cache.html
 /manifest.json
 /ico.png
 /icon.png
-/all.css
-/all.build.js
+/main.css
+/dist/wavesurfer.js
+/dist/plugin/wavesurfer.regions.js
+/oneup.js
+/app.js
+/keys.js
+/markers.js
+/contextmenu.js
+/lufs.js
+/ui-fx.js
+/ui.js
+/modal.js
+/state.js
+/engine.js
+/actions.js
+/drag.js
+/recorder.js
+/welcome.js
+/fx-pg-eq.js
+/fx-auto.js
+/local.js
+/id3.js
+/lzma.js
+/amss-format.js
+/multitrack.js
+/i18n.js
 /recorder-worklet.js
 /tempo-estimator.js
 /tempo-worker.js

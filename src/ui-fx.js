@@ -2350,7 +2350,7 @@
 					str += field('album', 'Album', st.tag.album);
 					str += field('year', 'Year', st.tag.year);
 					str += field('genre', 'Genre', st.tag.genre);
-					str += field('track', 'Track', st.tag.track);
+					str += field('track', '曲目编号', st.tag.track);
 					str += area('comment', 'Comment', (st.tag.comment||{}).text, 38);
 					str += area('lyrics', 'Lyrics', (st.tag.lyrics||{}).lyrics, 50);
 					str += '<div class="pk_id3cover" style="margin-top:8px;clear:both"></div>';
@@ -2633,10 +2633,11 @@
 							};
 					}
 
-					var title = 'Save Custom Preset for filter "' + curr_filter_ui.id + '"';
+					var filter_label = window.PK_I18N ? window.PK_I18N.t(curr_filter_ui.id) : curr_filter_ui.id;
+					var title = '保存“' + filter_label + '”效果的自定义预设';
 					if (!is_new) {
 						var cname = custom_obj.name;
-						title = 'Edit Custom Preset "' + cname + '", for filter "' + curr_filter_ui.id + '"';
+						title = '编辑“' + filter_label + '”效果的自定义预设：“' + cname + '”';
 					}
 
 					new PKSimpleModal({
@@ -2686,7 +2687,7 @@
 						btn_delete
 					  ],
 					  body:'<label for="k07">Preset Name</label>' +
-						'<input style="width:100%;box-sizing:border-box;min-width:0" maxlength="16" placeholder="Please type a name, eg: My Preset" ' + default_txt + ' class="pk_txt" type="text" id="k07" />',
+						'<input style="width:100%;box-sizing:border-box;min-width:0" maxlength="16" placeholder="请输入名称，例如：我的预设" ' + default_txt + ' class="pk_txt" type="text" id="k07" />',
 					  setup:function( q ) {
 								// app.fireEvent ('RequestPause');
 

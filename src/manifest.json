@@ -1,6 +1,6 @@
 {
-  "name": "Audiomass - Audio Editor",
-  "short_name": "Audiomass - Audio Editor",
+  "name": "AudioMass - 音频编辑器",
+  "short_name": "AudioMass",
   "start_url": ".",
   "scope": ".",
   "display": "standalone",

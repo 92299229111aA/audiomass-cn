@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
 	<script>window.update = function(){};</script>
-	<title>AudioMass - Frequency Analysis</title>
+	<title>AudioMass - 频率分析</title>
 	<style>
 	html,body{height:100%}
 	body{padding:0;margin:0;background:#111;position:relative;z-index:2;overflow:hidden;}
@@ -74,9 +74,9 @@
 </head>
 <body>
 	<canvas id="fr" width="600" height="188" style="width:100%;height:100%;display:block"></canvas>
-	<div>FREQUENCY ANALYSER</div>
+	<div>频率分析仪</div>
 
-	<a id="d" onclick="dock()">DOCK</a>
+	<a id="d" onclick="dock()">停靠</a>
 	<a id="e" onclick="remove()">X</a>
 	<a id="f" onmousedown="return drag(event)"></a>
 
@@ -90,7 +90,7 @@
 		w.remove = function (){};
 		if (iframe) {
 			d.body.className = 'b';
-			d.getElementById ('d').textContent = 'UNDOCK';
+			d.getElementById ('d').textContent = '取消停靠';
 			w.remove = function () {
 				w.parent.PKAudioEditor.ui.Dock ('RequestShowFreqAn', 'eq', [1, 1]);
 			};
@@ -222,5 +222,6 @@
 		}, 60);
 	</script>
 
+	<script src="i18n.js"></script>
 </body>
 </html>

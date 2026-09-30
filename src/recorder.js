@@ -39,6 +39,18 @@
 
 		var curr_offset = 0;
 		var first_skip = 8;
+		function recordingErrorText ( error ) {
+			var name = error && error.name;
+			if (name === 'NotAllowedError' || name === 'SecurityError' || name === 'PermissionDeniedError')
+				return '未获得麦克风使用权限。';
+			if (name === 'NotFoundError' || name === 'DevicesNotFoundError')
+				return '未找到麦克风设备。';
+			if (name === 'NotReadableError' || name === 'TrackStartError')
+				return '麦克风无法使用，可能正被其他应用占用。';
+			if (name === 'OverconstrainedError')
+				return '输入设备不符合录音要求。';
+			return '录音失败，请检查麦克风设备和浏览器权限。';
+		}
 
 		function reportError ( error, cb ) {
 			is_starting = false;
@@ -48,7 +60,7 @@
 				return ;
 			}
 			app.fireEvent ('ErrorRec');
-			app.fireEvent ('ShowError', error && error.message ? error.message : 'No recording device found');
+			app.fireEvent ('ShowError', recordingErrorText ( error ));
 		}
 
 		function flushAgg () {
@@ -337,8 +349,7 @@
 				},
 				onerror: function ( error ) {
 					app.fireEvent ('ErrorRec');
-					if (error && error.message) app.fireEvent ('ShowError', error.message);
-					else app.fireEvent ('ShowError', 'No recording device found');
+					app.fireEvent ('ShowError', recordingErrorText ( error ));
 				}
 			});
 		};

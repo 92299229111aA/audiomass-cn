@@ -927,7 +927,7 @@
 			var sel1 = range.type === 'lowpass' ? 'selected' : '';
 			var sel2 = range.type === 'highpass' ? 'selected' : '';
 			var el_type = d.createElement ('div');
-			el_type.innerHTML = '<select><option>peaking</option><option ' + sel1 + '>lowpass</option><option ' + sel2 + '>highpass</option></select>';
+			el_type.innerHTML = '<select><option value="peaking">peaking</option><option value="lowpass" ' + sel1 + '>lowpass</option><option value="highpass" ' + sel2 + '>highpass</option></select>';
 
 			el_type.getElementsByTagName('select')[0].onchange = function ( e ) {
 				var val = this.options[this.selectedIndex].value;
